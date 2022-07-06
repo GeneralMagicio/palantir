@@ -1,0 +1,58 @@
+{
+  "name": "palantir",
+  "version": "1.0.0",
+  "description": "discord-bot for looking up data from Coda and organising GM's org",
+  "main": "prod/index.js",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint src --max-warnings 0",
+    "start": "ts-node -r dotenv/config --transpile-only ./src",
+    "start:dev": "nodemon -r dotenv/config ./src",
+    "test": "echo 'no tests yet'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeneralMagicio/palantir.git"
+  },
+  "keywords": [
+    "discord-bot",
+    "coda",
+    "organisation",
+    "hr",
+    "automation"
+  ],
+  "author": "Vyvy-vi",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/GeneralMagicio/palantir/issues"
+  },
+  "homepage": "https://github.com/GeneralMagicio/palantir#readme",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.27.0",
+    "@typescript-eslint/parser": "^5.27.0",
+    "eslint": "^8.16.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-jsdoc": "^39.3.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.16",
+    "prettier": "^2.6.2"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^0.15.0",
+    "@discordjs/rest": "^0.5.0",
+    "coda-js": "^4.0.1",
+    "discord.js": "^13.8.0",
+    "dotenv": "^16.0.1",
+    "jet-logger": "^1.1.5",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.7.2"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts, html",
+    "exec": "ts-node --files"
+  }
+}
