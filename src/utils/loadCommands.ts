@@ -18,9 +18,7 @@ export const loadCommands = async (): Promise<Command[]> => {
     if (name !== Object.keys(mod)[0]) {
       logger.warn(
         `Exported Command and name of file differ.\n${join(
-          process.cwd(),
-          "prod",
-          "commands",
+          commandDirPath,
           file
         )} should export ${name}: Command instead of ${
           Object.keys(mod)[0]

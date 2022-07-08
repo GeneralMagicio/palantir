@@ -16,8 +16,12 @@ export const membersHandler: CommandHandler = async (Bot, interaction) => {
     users.push(row.values);
   }
 
-  let index = 0;
-  await interaction.editReply({
-    embeds: [renderMemberDataEmbed(users[index])],
-  });
+  if (!users || users.length === 0) {
+    await interaction.editReply("No members found");
+  } else {
+    let index = 0;
+    await interaction.editReply({
+      embeds: [renderMemberDataEmbed(users[index])],
+    });
+  }
 };

@@ -1,6 +1,7 @@
 export interface UserData {
   Name?: string;
   UID?: string;
+  "Coda user"?: string;
   Email?: string;
   Role?: string;
   Telegram?: string;
