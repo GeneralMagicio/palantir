@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint src --max-warnings 0",
-    "start": "ts-node -r dotenv/config --transpile-only ./src",
-    "start:dev": "nodemon -r dotenv/config ./src",
+    "start": "export DEV_MODE='manual' && node -r dotenv/config ./prod/index.js",
+    "start:dev": "export DEV_MODE='watch' && nodemon",
     "test": "echo 'no tests yet'"
   },
   "repository": {
@@ -52,7 +52,10 @@
     "watch": [
       "src"
     ],
-    "ext": "ts, html",
-    "exec": "ts-node --files"
+    "ext": "ts, json",
+    "execMap": {
+      "ts": "ts-node"
+    },
+    "exec": "ts-node -r dotenv/config ./src/index.ts"
   }
 }

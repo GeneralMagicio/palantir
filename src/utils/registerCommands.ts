@@ -3,14 +3,12 @@ import { Routes } from "discord-api-types/v9";
 
 import { Bot } from "../interfaces/Bot";
 
-import logger from 'jet-logger';
+import logger from "jet-logger";
 
 export const registerCommands = async (Bot: Bot): Promise<boolean> => {
   try {
     if (!Bot.user?.id) {
-      logger.err(
-        "Can't Register commands. Discord Bot not logged in."
-      );
+      logger.err("Can't Register commands. Discord Bot not logged in.");
       return false;
     }
 
@@ -19,11 +17,18 @@ export const registerCommands = async (Bot: Bot): Promise<boolean> => {
       Bot.envConfigs.token || ""
     );
 
-    const commandData = Bot.commands.map((el) => el.data.toJSON());
-    if (Bot.commands.length === 0) {
-      logger.info("No commands found to register...");
+    if (
+      (Bot.commands[0] === undefined && Bot.commands.length === 1) ||
+      Bot.commands.length === 0
+    ) {
+      logger.warn("No commands found to register...");
       return false;
     }
+
+    const commandData = Bot.commands
+      .filter((el) => el !== undefined)
+      .map((el) => el.data.toJSON());
+
     if (Bot.envConfigs.homeGuildId) {
       logger.info("Registering commands to home-guild only...");
       await rest.put(

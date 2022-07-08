@@ -4,7 +4,7 @@ import { Command } from "../interfaces/Command";
 import logger from "jet-logger";
 import { membersHandler } from "../modules/members/membersHandler";
 
-export const start: Command = {
+export const members: Command = {
   data: new SlashCommandBuilder()
     .setName("members")
     .setDescription("Command to fetch member data from Coda"),
